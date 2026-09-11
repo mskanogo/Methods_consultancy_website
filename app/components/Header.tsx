@@ -1,11 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   return (
     <header className="bg-white border-b border-brand-grey">
       <nav className="max-w-6xl mx-auto flex items-center justify-between p-4">
-        <Link href="/" className="text-brand-red font-bold text-xl">
-          Methods Consultancy
+        <Link href="/">
+          <Image
+            src="/logo-color.svg"
+            alt="Methods Consultancy"
+            width={200}
+            height={32}
+            priority
+          />
         </Link>
         <div className="flex gap-6 text-brand-ink text-sm">
           <Link href="/about">About</Link>
