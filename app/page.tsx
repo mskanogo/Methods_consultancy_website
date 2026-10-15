@@ -1,3 +1,7 @@
+import Link from "next/link";
+import ServiceCard from "./components/ServiceCard";
+import { services } from "./data/services";
+
 export default function Home() {
   return (
     <>
@@ -12,42 +16,36 @@ export default function Home() {
           hold up under scrutiny.
         </p>
         <div className="mt-8 flex gap-4 justify-center">
-          <button className="bg-brand-red text-white px-6 py-3 rounded font-medium">
+          <Link
+            href="/contact"
+            className="bg-brand-red text-white px-6 py-3 rounded font-medium"
+          >
             Book a consultation
-          </button>
-          <button className="border border-brand-ink text-brand-ink px-6 py-3 rounded font-medium">
+          </Link>
+          <Link
+            href="/services"
+            className="border border-brand-ink text-brand-ink px-6 py-3 rounded font-medium"
+          >
             Explore services
-          </button>
+          </Link>
         </div>
       </section>
 
-      {/* Proof band — standards/frameworks, text only per brief */}
+      {/* Proof band */}
       <section className="px-8 py-10 bg-white border-b border-brand-grey">
         <p className="text-center text-sm text-brand-mid-grey uppercase tracking-wide">
           Working to TOGAF 10 · BCBS 239 · ISO 20022 · CPMI-PFMI
         </p>
       </section>
 
-      {/* Services overview placeholder */}
+      {/* Services overview */}
       <main className="px-8 py-16 bg-white">
         <h2 className="text-2xl font-bold text-brand-ink mb-8 text-center">
           Our Services
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {[
-            "Enterprise Architecture Establishment",
-            "Architecture Governance Design",
-            "Baseline Discovery & Assessment",
-          ].map((service) => (
-            <div
-              key={service}
-              className="border border-brand-grey rounded p-6 text-brand-ink"
-            >
-              <h3 className="font-semibold mb-2">{service}</h3>
-              <p className="text-sm text-brand-mid-grey">
-                Placeholder description — final copy pending content load.
-              </p>
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {services.map((service) => (
+            <ServiceCard key={service.slug} service={service} />
           ))}
         </div>
       </main>
