@@ -5,11 +5,17 @@ export default function ServiceCard({ service }: { service: Service }) {
   return (
     <Link
       href={`/services/${service.slug}`}
-      className="block border border-brand-grey rounded p-6 bg-white hover:border-brand-red transition-colors focus-visible:outline-2 focus-visible:outline-brand-red"
+      className="group block bg-white p-8 hover:bg-brand-grey/50 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-red-dark"
     >
-      <h3 className="font-semibold text-brand-ink mb-2">{service.title}</h3>
-      <p className="text-sm text-brand-mid-grey mb-4">{service.summary}</p>
-      <span className="text-sm font-medium text-brand-red-dark">Learn more →</span>
+      <h3 className="font-display text-xl font-semibold text-brand-ink">
+        {service.title}
+      </h3>
+      <p className="mt-3 text-sm leading-relaxed text-brand-mid-grey">
+        {service.summary}
+      </p>
+      <span className="mt-6 inline-block text-sm font-semibold text-brand-red-dark group-hover:underline">
+        Learn more
+      </span>
     </Link>
   );
 }
