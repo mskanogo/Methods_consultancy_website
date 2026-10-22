@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @theme {
   --color-brand-red: #F50B14;
   --color-brand-red-dark: #C00711;
@@ -7,27 +8,35 @@
   --color-brand-mid-grey: #55565A;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans-brand), system-ui, sans-serif;
+  --font-display: var(--font-serif-brand), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #ffffff;
+  --foreground: #1b1b1f;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans-brand), system-ui, sans-serif;
+}
+
+@keyframes rule-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-rule { transform-origin: left; animation: rule-draw 0.9s ease-out both; }
+  .hero-rise { animation: rise 0.8s ease-out 0.5s both; }
 }
