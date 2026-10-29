@@ -29,10 +29,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <CtaBand
-        heading="Not sure which service fits?"
-        label="Talk to us"
-      />
+      <CtaBand heading="Not sure which service fits?" label="Talk to us" />
     </main>
   );
 }
