@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function AssistantLauncher() {
+const pathname = usePathname();
+    if (pathname === "/assistant") return null;
   return (
     <Link
       href="/assistant"
