@@ -21,9 +21,18 @@ const LIMIT =
 const focus =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-dark";
 
-export default function AssistantChat() {
+type AssistantChatProps = { topic?: string; topicTitle?: string };
+
+export default function AssistantChat({ topic, topicTitle }: AssistantChatProps) {
+  const greeting: Message = topicTitle
+    ? {
+        role: "assistant",
+        text: `Hello. You opened this from our page on ${topicTitle}. Ask me about it, or about anything else we do.`,
+      }
+    : GREETING;
+
   const [consented, setConsented] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([GREETING]);
+  const [messages, setMessages] = useState<Message[]>([greeting]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const logRef = useRef<HTMLDivElement>(null);
@@ -50,6 +59,7 @@ export default function AssistantChat() {
         body: JSON.stringify({
           // Skip the greeting, which only exists on the page.
           messages: next.slice(1).map((m) => ({ role: m.role, content: m.text })),
+		  topic,
         }),
       });
       if (response.status === 429) throw new Error("limit");
