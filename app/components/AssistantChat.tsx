@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { findAnswer } from "../data/faq";
 
 type Message = { role: "user" | "assistant"; text: string };
 
@@ -13,6 +12,12 @@ const GREETING: Message = {
   text: "Hello. Ask me about Methods Consultancy: what we do, who we work with, or how to start a conversation.",
 };
 
+const UNAVAILABLE =
+  "The assistant is unavailable right now. You can still use the Book a consultation button, or the Contact page, to reach the team.";
+
+const LIMIT =
+  "This conversation has reached its limit. Please refresh the page to start a new one, or contact the team.";
+
 const focus =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-dark";
 
@@ -20,25 +25,44 @@ export default function AssistantChat() {
   const [consented, setConsented] = useState(false);
   const [messages, setMessages] = useState<Message[]>([GREETING]);
   const [input, setInput] = useState("");
+  const [busy, setBusy] = useState(false);
   const logRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const log = logRef.current;
     if (log) log.scrollTop = log.scrollHeight;
-  }, [messages]);
+  }, [messages, busy]);
 
-  function send(event: React.FormEvent) {
+  async function send(event: React.FormEvent) {
     event.preventDefault();
     const text = input.trim();
-    if (!text) return;
+    if (!text || busy) return;
 
-    // Sprint 5 card 6: replace findAnswer with a call to the server-side proxy route.
-    setMessages((prev) => [
-      ...prev,
-      { role: "user", text },
-      { role: "assistant", text: findAnswer(text) },
-    ]);
+    const next: Message[] = [...messages, { role: "user", text }];
+    setMessages(next);
     setInput("");
+    setBusy(true);
+
+    try {
+      const response = await fetch("/api/assistant", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          // Skip the greeting, which only exists on the page.
+          messages: next.slice(1).map((m) => ({ role: m.role, content: m.text })),
+        }),
+      });
+      if (response.status === 429) throw new Error("limit");
+      if (!response.ok) throw new Error("unavailable");
+
+      const data = (await response.json()) as { reply: string };
+      setMessages([...next, { role: "assistant", text: data.reply }]);
+    } catch (error) {
+      const limit = error instanceof Error && error.message === "limit";
+      setMessages([...next, { role: "assistant", text: limit ? LIMIT : UNAVAILABLE }]);
+    } finally {
+      setBusy(false);
+    }
   }
 
   if (!consented) {
@@ -103,6 +127,9 @@ export default function AssistantChat() {
             </p>
           </div>
         ))}
+        {busy && (
+          <p className="text-sm text-brand-mid-grey">The assistant is replying...</p>
+        )}
       </div>
 
       <form onSubmit={send} className="flex gap-3 border-t border-brand-grey p-4">
@@ -120,7 +147,7 @@ export default function AssistantChat() {
         />
         <button
           type="submit"
-          disabled={!input.trim()}
+          disabled={!input.trim() || busy}
           className={`bg-brand-red px-5 py-3 text-sm font-semibold text-white disabled:opacity-50 ${focus}`}
         >
           Send
