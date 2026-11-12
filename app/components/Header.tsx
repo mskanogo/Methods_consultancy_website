@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
-const LOGO_ON_DARK = "/logo-white.svg";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { href: "/about", label: "About" },
@@ -16,23 +15,17 @@ const focus =
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-brand-ink text-white">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-panel text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-8 py-4">
         <Link href="/" aria-label="Methods Consultancy home" className={focus}>
-          {LOGO_ON_DARK ? (
-            <Image
-              src={LOGO_ON_DARK}
-              alt="Methods Consultancy"
-              width={208}
-              height={32}
-              priority
-              className="h-8 w-auto"
-            />
-          ) : (
-            <span className="text-xl font-extrabold lowercase tracking-tight">
-              methods <span className="text-brand-red">consultancy</span>
-            </span>
-          )}
+          <Image
+            src="/logo-white.svg"
+            alt="Methods Consultancy"
+            width={208}
+            height={32}
+            priority
+            className="h-8 w-auto"
+          />
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-8 text-sm md:flex">
@@ -47,12 +40,15 @@ export default function Header() {
           ))}
         </nav>
 
-        <Link
-          href="/contact"
-          className={`hidden bg-brand-red px-4 py-2 text-sm font-semibold text-white md:inline-block ${focus}`}
-        >
-          Book a consultation
-        </Link>
+        <div className="hidden items-center gap-4 md:flex">
+          <ThemeToggle />
+          <Link
+            href="/contact"
+            className={`bg-brand-red px-4 py-2 text-sm font-semibold text-white ${focus}`}
+          >
+            Book a consultation
+          </Link>
+        </div>
 
         {/* Mobile menu */}
         <details className="relative md:hidden">
@@ -61,12 +57,13 @@ export default function Header() {
           >
             Menu
           </summary>
-          <div className="absolute right-0 mt-2 flex w-60 flex-col gap-4 border border-white/15 bg-brand-ink p-5">
+          <div className="absolute right-0 mt-2 flex w-60 flex-col gap-4 border border-white/15 bg-panel p-5">
             {links.map((link) => (
               <Link key={link.href} href={link.href} className={focus}>
                 {link.label}
               </Link>
             ))}
+            <ThemeToggle />
             <Link
               href="/contact"
               className={`bg-brand-red px-4 py-2 text-center font-semibold ${focus}`}

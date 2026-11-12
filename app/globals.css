@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
-@theme {
+/* Dark mode is switched by a "dark" class on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Brand palette from the brief (Section 5.2). "static" keeps every variable available. */
+@theme static {
   --color-brand-red: #F50B14;
   --color-brand-red-dark: #C00711;
   --color-brand-ink: #1B1B1F;
@@ -8,21 +12,43 @@
   --color-brand-mid-grey: #55565A;
 }
 
+/* Role tokens. Components use these, so one switch changes the whole site. */
+:root {
+  color-scheme: light;
+  --surface: #ffffff;
+  --surface-alt: var(--color-brand-grey);
+  --ink: var(--color-brand-ink);
+  --muted: var(--color-brand-mid-grey);
+  --line: var(--color-brand-grey);
+  --accent: var(--color-brand-red-dark);
+  --panel: var(--color-brand-ink);
+}
+
+.dark {
+  color-scheme: dark;
+  --surface: #141416;
+  --surface-alt: #1d1d21;
+  --ink: #f2f2f3;
+  --muted: #a8a9ad;
+  --line: #34353a;
+  --accent: #ff5a60;
+}
+
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-alt: var(--surface-alt);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-panel: var(--panel);
   --font-sans: var(--font-sans-brand), system-ui, sans-serif;
   --font-display: var(--font-serif-brand), Georgia, serif;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #1b1b1f;
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--surface);
+  color: var(--ink);
   font-family: var(--font-sans-brand), system-ui, sans-serif;
 }
 
