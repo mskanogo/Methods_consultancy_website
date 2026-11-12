@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
+import LegalPage from "../../components/LegalPage";
+
+export const metadata: Metadata = {
+  title: "Terms of use | Methods Consultancy",
+  description: "The terms for using the Methods Consultancy website.",
+};
+
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-brand-grey p-8">
-      <h1 className="text-brand-red text-4xl font-bold">Terms</h1>
-    </main>
+    <LegalPage
+      title="Terms of use"
+      summary="The terms for using this website."
+    />
   );
 }
