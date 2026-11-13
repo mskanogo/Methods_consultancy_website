@@ -23,7 +23,7 @@ const FIELD_ORDER: FieldName[] = [
 ];
 
 const inputClass =
-  "w-full border border-brand-mid-grey bg-white px-4 py-3 text-sm text-brand-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-dark";
+  "w-full border border-muted bg-surface px-4 py-3 text-sm text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 function focusFirstError(form: HTMLFormElement, errors: FieldErrors) {
   const first = FIELD_ORDER.find((field) => errors[field]);
@@ -47,15 +47,15 @@ function FieldShell({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-semibold text-brand-ink">
+      <label htmlFor={id} className="block text-sm font-semibold text-ink">
         {label}
         {optional && (
-          <span className="font-normal text-brand-mid-grey"> (optional)</span>
+          <span className="font-normal text-muted"> (optional)</span>
         )}
       </label>
       <div className="mt-2">{children}</div>
       {error && (
-        <p id={`${id}-error`} className="mt-2 text-sm font-medium text-brand-red-dark">
+        <p id={`${id}-error`} className="mt-2 text-sm font-medium text-accent">
           {error}
         </p>
       )}
@@ -134,11 +134,11 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div role="status" className="border border-brand-grey bg-white p-8">
-        <h3 className="font-display text-2xl font-semibold text-brand-ink">
+      <div role="status" className="border border-line bg-surface p-8">
+        <h3 className="font-display text-2xl font-semibold text-ink">
           Thank you
         </h3>
-        <p className="mt-4 leading-relaxed text-brand-mid-grey">
+        <p className="mt-4 leading-relaxed text-muted">
           {delivered
             ? "Your message has been sent to the team."
             : "Your message passed our checks, but this preview site is not connected to email yet, so nothing was sent."}
@@ -146,7 +146,7 @@ export default function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 font-semibold text-brand-red-dark underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-dark"
+          className="mt-6 font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           Send another message
         </button>
@@ -157,12 +157,12 @@ export default function ContactForm() {
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-6">
       {Object.keys(errors).length > 0 && (
-        <p role="alert" className="text-sm font-semibold text-brand-red-dark">
+        <p role="alert" className="text-sm font-semibold text-accent">
           Please check the fields marked below.
         </p>
       )}
       {status === "failed" && (
-        <p role="alert" className="text-sm font-semibold text-brand-red-dark">
+        <p role="alert" className="text-sm font-semibold text-accent">
           Something went wrong and your message was not sent. Please try again,
           or use the booking option.
         </p>
@@ -261,12 +261,12 @@ export default function ContactForm() {
             className="mt-1 h-4 w-4"
             {...aria("consent")}
           />
-          <label htmlFor="consent" className="text-sm leading-relaxed text-brand-mid-grey">
+          <label htmlFor="consent" className="text-sm leading-relaxed text-muted">
             I agree that Methods Consultancy may use these details to reply to
             my enquiry, as described in the{" "}
             <Link
               href="/legal/privacy"
-              className="font-semibold text-brand-red-dark underline"
+              className="font-semibold text-accent underline"
             >
               privacy notice
             </Link>
@@ -274,7 +274,7 @@ export default function ContactForm() {
           </label>
         </div>
         {errors.consent && (
-          <p id="consent-error" className="mt-2 text-sm font-medium text-brand-red-dark">
+          <p id="consent-error" className="mt-2 text-sm font-medium text-accent">
             {errors.consent}
           </p>
         )}
@@ -283,7 +283,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="bg-brand-red px-6 py-3 font-semibold text-white disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink"
+        className="bg-brand-red px-6 py-3 font-semibold text-white disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
       >
         {status === "sending" ? "Sending..." : "Send message"}
       </button>

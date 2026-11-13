@@ -19,26 +19,26 @@ export default function Home() {
       <Hero />
 
       {/* Standards */}
-      <section className="border-b border-brand-grey bg-white px-8 py-8">
-        <p className="mx-auto max-w-4xl text-center text-sm text-brand-mid-grey">
+      <section className="border-b border-line bg-surface px-8 py-8">
+        <p className="mx-auto max-w-4xl text-center text-sm text-muted">
           We work to TOGAF 10, BCBS 239, ISO 20022, CPMI-PFMI, and national
           data-protection and cybersecurity frameworks.
         </p>
       </section>
 
       {/* Intro */}
-      <section className="bg-white">
+      <section className="bg-surface">
         <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
-          <p className="max-w-xs text-sm leading-relaxed text-brand-mid-grey">
+          <p className="max-w-xs text-sm leading-relaxed text-muted">
             An independent firm in Nairobi, working with financial institutions,
             regulators, and public-sector organisations across Africa since 2009.
           </p>
           <div>
-            <h2 className="font-display text-4xl font-semibold leading-tight text-brand-ink md:text-5xl">
+            <h2 className="font-display text-4xl font-semibold leading-tight text-ink md:text-5xl">
               We turn enterprise architecture from a document into a working
               institution.
             </h2>
-            <p className="mt-6 max-w-2xl leading-relaxed text-brand-mid-grey">
+            <p className="mt-6 max-w-2xl leading-relaxed text-muted">
               We design the governance bodies, write the frameworks and
               policies, run the baseline discovery, produce the artefacts, and
               review vendor solutions for conformance. Clients are left with a
@@ -46,7 +46,7 @@ export default function Home() {
             </p>
             <Link
               href="/about"
-              className="mt-8 inline-block font-semibold text-brand-red-dark underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-dark"
+              className="mt-8 inline-block font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               About the firm
             </Link>
@@ -55,12 +55,12 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section className="bg-white pb-24">
+      <section className="bg-surface pb-24">
         <div className="mx-auto max-w-6xl px-8">
-          <h2 className="font-display text-4xl font-semibold text-brand-ink md:text-5xl">
+          <h2 className="font-display text-4xl font-semibold text-ink md:text-5xl">
             Ten services, one working discipline
           </h2>
-          <div className="mt-12 grid grid-cols-1 gap-px border border-brand-grey bg-brand-grey sm:grid-cols-2">
+          <div className="mt-12 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2">
             {services.map((service) => (
               <ServiceCard key={service.slug} service={service} />
             ))}
@@ -69,7 +69,7 @@ export default function Home() {
       </section>
 
       {/* Sectors */}
-      <section className="bg-brand-ink text-white">
+      <section className="bg-panel text-white">
         <div className="mx-auto grid max-w-6xl gap-12 px-8 py-24 md:grid-cols-[1fr_2fr]">
           <div>
             <h2 className="font-display text-4xl font-semibold">
@@ -98,42 +98,42 @@ export default function Home() {
       </section>
 
       {/* Featured engagement */}
-      <section className="bg-white">
+      <section className="bg-surface">
         <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
           <div>
-            <h2 className="font-display text-4xl font-semibold text-brand-ink">
+            <h2 className="font-display text-4xl font-semibold text-ink">
               Featured engagement
             </h2>
             <Link
               href="/experience"
-              className="mt-6 inline-block font-semibold text-brand-red-dark underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-dark"
+              className="mt-6 inline-block font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               See our experience
             </Link>
           </div>
-          <div className="border-t-2 border-brand-ink pt-6">
-            <p className="text-sm font-semibold text-brand-red-dark">
+          <div className="border-t-2 border-ink pt-6">
+            <p className="text-sm font-semibold text-accent">
               {featuredEngagement.sector}
             </p>
-            <h3 className="mt-1 font-display text-2xl font-semibold text-brand-ink">
+            <h3 className="mt-1 font-display text-2xl font-semibold text-ink">
               {featuredEngagement.client ?? featuredEngagement.anonymisedLabel}
             </h3>
             <dl className="mt-6 space-y-5 text-sm">
               <div>
-                <dt className="font-semibold text-brand-ink">Mandate</dt>
-                <dd className="mt-1 leading-relaxed text-brand-mid-grey">
+                <dt className="font-semibold text-ink">Mandate</dt>
+                <dd className="mt-1 leading-relaxed text-muted">
                   {featuredEngagement.mandate}
                 </dd>
               </div>
               <div>
-                <dt className="font-semibold text-brand-ink">What we did</dt>
-                <dd className="mt-1 leading-relaxed text-brand-mid-grey">
+                <dt className="font-semibold text-ink">What we did</dt>
+                <dd className="mt-1 leading-relaxed text-muted">
                   {featuredEngagement.whatWeDid}
                 </dd>
               </div>
               <div>
-                <dt className="font-semibold text-brand-ink">What changed</dt>
-                <dd className="mt-1 leading-relaxed text-brand-mid-grey">
+                <dt className="font-semibold text-ink">What changed</dt>
+                <dd className="mt-1 leading-relaxed text-muted">
                   {featuredEngagement.whatChanged}
                 </dd>
               </div>
@@ -143,19 +143,19 @@ export default function Home() {
       </section>
 
       {/* Figures */}
-      <section className="bg-brand-grey">
+      <section className="bg-alt">
         <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
-          <h2 className="font-display text-4xl font-semibold text-brand-ink">
+          <h2 className="font-display text-4xl font-semibold text-ink">
             The practice in figures
           </h2>
-          <dl className="divide-y divide-brand-ink/15 border-y border-brand-ink/15">
+          <dl className="divide-y divide-ink/15 border-y border-ink/15">
             {figures.map((figure) => (
               <div
                 key={figure.label}
                 className="flex items-baseline justify-between py-6"
               >
-                <dt className="text-sm text-brand-mid-grey">{figure.label}</dt>
-                <dd className="font-display text-5xl font-semibold text-brand-ink">
+                <dt className="text-sm text-muted">{figure.label}</dt>
+                <dd className="font-display text-5xl font-semibold text-ink">
                   {figure.value}
                 </dd>
               </div>

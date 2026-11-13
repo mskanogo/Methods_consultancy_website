@@ -19,9 +19,9 @@ export default function ServicesPage() {
         summary="From the first framework to a working architecture practice: ten services that take an organisation from strategy papers to decisions that stick."
       />
 
-      <section className="bg-white py-24">
+      <section className="bg-surface py-24">
         <div className="mx-auto max-w-6xl px-8">
-          <div className="grid grid-cols-1 gap-px border border-brand-grey bg-brand-grey sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2">
             {services.map((service) => (
               <ServiceCard key={service.slug} service={service} />
             ))}

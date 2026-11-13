@@ -24,7 +24,7 @@ export default async function AssistantPage({ searchParams }: Props) {
         title="Ask us anything about Methods Consultancy."
         summary="Questions about our services, methods, and ways of working are answered from approved information. For anything else, we'll point you to the team."
       />
-      <section className="bg-white">
+      <section className="bg-surface">
         <div className="mx-auto max-w-3xl px-8 py-16">
           <AssistantChat topic={service?.slug} topicTitle={service?.title} />
         </div>

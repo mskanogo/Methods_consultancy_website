@@ -50,12 +50,12 @@ export default function AboutPage() {
       />
 
       {/* Firm story */}
-      <section className="bg-white">
+      <section className="bg-surface">
         <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
-          <h2 className="font-display text-4xl font-semibold text-brand-ink">
+          <h2 className="font-display text-4xl font-semibold text-ink">
             The firm
           </h2>
-          <div className="space-y-6 leading-relaxed text-brand-mid-grey">
+          <div className="space-y-6 leading-relaxed text-muted">
             <p>
               Established in 2009, we specialise in enterprise architecture,
               architecture governance, and technology strategy for financial
@@ -80,27 +80,27 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership */}
-      <section className="bg-brand-grey">
+      <section className="bg-alt">
         <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
-          <h2 className="font-display text-4xl font-semibold text-brand-ink">
+          <h2 className="font-display text-4xl font-semibold text-ink">
             Leadership
           </h2>
           <div className="flex flex-col gap-8 sm:flex-row">
             <div
               role="img"
               aria-label="Photo to be supplied"
-              className="flex h-56 w-44 shrink-0 items-center justify-center bg-white text-center text-sm text-brand-mid-grey"
+              className="flex h-56 w-44 shrink-0 items-center justify-center bg-surface text-center text-sm text-muted"
             >
               Photo to be supplied
             </div>
             <div>
-              <h3 className="font-display text-2xl font-semibold text-brand-ink">
+              <h3 className="font-display text-2xl font-semibold text-ink">
                 Stanley Kibe Njonjo
               </h3>
-              <p className="mt-1 text-sm font-semibold text-brand-red-dark">
+              <p className="mt-1 text-sm font-semibold text-accent">
                 Lead Consultant and Director
               </p>
-              <p className="mt-4 leading-relaxed text-brand-mid-grey">
+              <p className="mt-4 leading-relaxed text-muted">
                 Biography to be supplied.
               </p>
             </div>
@@ -109,21 +109,21 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-white">
+      <section className="bg-surface">
         <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
           <div>
-            <h2 className="font-display text-4xl font-semibold text-brand-ink">
+            <h2 className="font-display text-4xl font-semibold text-ink">
               How we work
             </h2>
-            <p className="mt-4 text-sm italic text-brand-mid-grey">{draftNote}</p>
+            <p className="mt-4 text-sm italic text-muted">{draftNote}</p>
           </div>
-          <ul className="divide-y divide-brand-grey border-y border-brand-grey">
+          <ul className="divide-y divide-line border-y border-line">
             {values.map((value) => (
               <li key={value.title} className="py-8">
-                <h3 className="font-display text-2xl font-semibold text-brand-ink">
+                <h3 className="font-display text-2xl font-semibold text-ink">
                   {value.title}
                 </h3>
-                <p className="mt-2 max-w-lg text-sm leading-relaxed text-brand-mid-grey">
+                <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted">
                   {value.text}
                 </p>
               </li>
@@ -133,7 +133,7 @@ export default function AboutPage() {
       </section>
 
       {/* How we engage */}
-      <section className="bg-brand-ink text-white">
+      <section className="bg-panel text-white">
         <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
           <div>
             <h2 className="font-display text-4xl font-semibold">
@@ -157,12 +157,12 @@ export default function AboutPage() {
       </section>
 
       {/* Standards */}
-      <section className="bg-white">
+      <section className="bg-surface">
         <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
-          <h2 className="font-display text-4xl font-semibold text-brand-ink">
+          <h2 className="font-display text-4xl font-semibold text-ink">
             Standards we work to
           </h2>
-          <div className="leading-relaxed text-brand-mid-grey">
+          <div className="leading-relaxed text-muted">
             <p>
               Our methods are anchored in TOGAF 10 for architecture method and
               content. For financial-sector clients we work to BCBS 239, ISO

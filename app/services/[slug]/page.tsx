@@ -39,18 +39,18 @@ export default async function ServicePage({ params }: Props) {
       />
 
       {/* Intro */}
-      <section className="bg-white">
+      <section className="bg-surface">
         <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
-          <h2 className="font-display text-4xl font-semibold text-brand-ink">
+          <h2 className="font-display text-4xl font-semibold text-ink">
             What it is
           </h2>
           <div>
-            <p className="text-lg leading-relaxed text-brand-mid-grey">
+            <p className="text-lg leading-relaxed text-muted">
               {service.intro}
             </p>
             <Link
               href={`/assistant?topic=${service.slug}`}
-              className="mt-8 inline-block font-semibold text-brand-red-dark underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-dark"
+              className="mt-8 inline-block font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               Ask our assistant about this service
             </Link>
@@ -59,21 +59,21 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* What we deliver */}
-      <section className="bg-brand-grey">
+      <section className="bg-alt">
         <div className="mx-auto max-w-6xl px-8 py-24">
-          <h2 className="font-display text-4xl font-semibold text-brand-ink">
+          <h2 className="font-display text-4xl font-semibold text-ink">
             What we deliver
           </h2>
           <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {service.deliverables.map((item) => (
-              <li key={item} className="border border-brand-grey bg-white p-6">
+              <li key={item} className="border border-line bg-surface p-6">
                 <div aria-hidden="true" className="mb-5 space-y-2">
                   <div className="h-1.5 w-1/3 bg-brand-red" />
-                  <div className="h-1 w-full bg-brand-grey" />
-                  <div className="h-1 w-5/6 bg-brand-grey" />
-                  <div className="h-1 w-2/3 bg-brand-grey" />
+                  <div className="h-1 w-full bg-alt" />
+                  <div className="h-1 w-5/6 bg-alt" />
+                  <div className="h-1 w-2/3 bg-alt" />
                 </div>
-                <p className="font-display text-lg font-semibold text-brand-ink">
+                <p className="font-display text-lg font-semibold text-ink">
                   {item}
                 </p>
               </li>
@@ -83,12 +83,12 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* How we work */}
-      <section className="bg-white">
+      <section className="bg-surface">
         <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
-          <h2 className="font-display text-4xl font-semibold text-brand-ink">
+          <h2 className="font-display text-4xl font-semibold text-ink">
             How we work
           </h2>
-          <p className="leading-relaxed text-brand-mid-grey">
+          <p className="leading-relaxed text-muted">
             Method summary to be supplied. Where relevant, this section will be
             anchored to the TOGAF ADM.
             <span className="mt-4 block text-sm italic">
@@ -99,12 +99,12 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* Related services */}
-      <section className="bg-white pb-24">
+      <section className="bg-surface pb-24">
         <div className="mx-auto max-w-6xl px-8">
-          <h2 className="font-display text-4xl font-semibold text-brand-ink">
+          <h2 className="font-display text-4xl font-semibold text-ink">
             Related services
           </h2>
-          <div className="mt-12 grid grid-cols-1 gap-px border border-brand-grey bg-brand-grey sm:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-3">
             {related.map((item) => (
               <ServiceCard key={item.slug} service={item} />
             ))}

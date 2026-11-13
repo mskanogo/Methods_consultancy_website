@@ -18,28 +18,28 @@ export default function SectorsPage() {
         summary="Central banks and regulators, banks and other financial institutions, and public-sector organisations across Africa."
       />
 
-      <section className="bg-white">
+      <section className="bg-surface">
         <div className="mx-auto max-w-6xl px-8 py-24">
-          <ul className="divide-y divide-brand-grey border-y border-brand-grey">
+          <ul className="divide-y divide-line border-y border-line">
             {sectors.map((sector) => (
               <li
                 key={sector.slug}
                 className="grid gap-4 py-12 md:grid-cols-[1fr_2fr]"
               >
-                <h2 className="font-display text-3xl font-semibold text-brand-ink">
+                <h2 className="font-display text-3xl font-semibold text-ink">
                   {sector.title}
                 </h2>
-                <p className="leading-relaxed text-brand-mid-grey">
+                <p className="leading-relaxed text-muted">
                   {sector.summary}
                 </p>
               </li>
             ))}
           </ul>
-          <p className="mt-12 max-w-2xl leading-relaxed text-brand-mid-grey">
+          <p className="mt-12 max-w-2xl leading-relaxed text-muted">
             We also support development partners and prime contractors who need
             specialist enterprise architecture subconsultants.
           </p>
-          <p className="mt-6 text-sm italic text-brand-mid-grey">
+          <p className="mt-6 text-sm italic text-muted">
             Working copy, pending confirmation.
           </p>
         </div>

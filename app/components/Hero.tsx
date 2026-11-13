@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-brand-ink text-white">
+    <section className="relative isolate overflow-hidden bg-panel text-white">
       {/* Grid, a nod to architecture diagrams */}
       <div
         aria-hidden="true"

@@ -19,7 +19,7 @@ const LIMIT =
   "This conversation has reached its limit. Please refresh the page to start a new one, or contact the team.";
 
 const focus =
-  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red-dark";
+  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 type AssistantChatProps = { topic?: string; topicTitle?: string };
 
@@ -77,16 +77,16 @@ export default function AssistantChat({ topic, topicTitle }: AssistantChatProps)
 
   if (!consented) {
     return (
-      <div className="border border-brand-grey bg-white p-8">
-        <h2 className="font-display text-2xl font-semibold text-brand-ink">
+      <div className="border border-line bg-surface p-8">
+        <h2 className="font-display text-2xl font-semibold text-ink">
           Before we start
         </h2>
-        <p className="mt-4 leading-relaxed text-brand-mid-grey">
+        <p className="mt-4 leading-relaxed text-muted">
           This is an automated assistant, not a person. It answers questions
           about Methods Consultancy from approved information only, and it
           cannot give advice on your own situation.
         </p>
-        <p className="mt-3 leading-relaxed text-brand-mid-grey">
+        <p className="mt-3 leading-relaxed text-muted">
           Please do not share confidential or sensitive details in this chat.
           You never need to give personal details to ask a question.
         </p>
@@ -100,7 +100,7 @@ export default function AssistantChat({ topic, topicTitle }: AssistantChatProps)
           </button>
           <Link
             href="/contact"
-            className={`font-semibold text-brand-red-dark underline underline-offset-4 ${focus}`}
+            className={`font-semibold text-accent underline underline-offset-4 ${focus}`}
           >
             Talk to a person instead
           </Link>
@@ -110,7 +110,7 @@ export default function AssistantChat({ topic, topicTitle }: AssistantChatProps)
   }
 
   return (
-    <div className="border border-brand-grey bg-white">
+    <div className="border border-line bg-surface">
       <div
         ref={logRef}
         role="log"
@@ -126,8 +126,8 @@ export default function AssistantChat({ topic, topicTitle }: AssistantChatProps)
             <p
               className={`max-w-[85%] px-4 py-3 text-sm leading-relaxed ${
                 message.role === "user"
-                  ? "bg-brand-ink text-white"
-                  : "bg-brand-grey text-brand-ink"
+                  ? "bg-panel text-white"
+                  : "bg-alt text-ink"
               }`}
             >
               <span className="sr-only">
@@ -138,11 +138,11 @@ export default function AssistantChat({ topic, topicTitle }: AssistantChatProps)
           </div>
         ))}
         {busy && (
-          <p className="text-sm text-brand-mid-grey">The assistant is replying...</p>
+          <p className="text-sm text-muted">The assistant is replying...</p>
         )}
       </div>
 
-      <form onSubmit={send} className="flex gap-3 border-t border-brand-grey p-4">
+      <form onSubmit={send} className="flex gap-3 border-t border-line p-4">
         <label htmlFor="assistant-input" className="sr-only">
           Your question
         </label>
@@ -153,7 +153,7 @@ export default function AssistantChat({ topic, topicTitle }: AssistantChatProps)
           maxLength={MAX_LENGTH}
           placeholder="Ask a question"
           autoComplete="off"
-          className="min-w-0 flex-1 border border-brand-mid-grey px-4 py-3 text-sm text-brand-ink"
+          className="min-w-0 flex-1 border border-muted bg-surface px-4 py-3 text-sm text-ink"
         />
         <button
           type="submit"
@@ -164,11 +164,11 @@ export default function AssistantChat({ topic, topicTitle }: AssistantChatProps)
         </button>
       </form>
 
-      <p className="border-t border-brand-grey px-4 py-3 text-xs text-brand-mid-grey">
+      <p className="border-t border-line px-4 py-3 text-xs text-muted">
         Automated assistant.{" "}
         <Link
           href="/contact"
-          className={`font-semibold text-brand-red-dark underline ${focus}`}
+          className={`font-semibold text-accent underline ${focus}`}
         >
           Talk to a person
         </Link>

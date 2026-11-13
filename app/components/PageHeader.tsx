@@ -6,7 +6,7 @@ type PageHeaderProps = {
 
 export default function PageHeader({ eyebrow, title, summary }: PageHeaderProps) {
   return (
-    <section className="bg-brand-ink text-white">
+    <section className="bg-panel text-white">
       <div className="mx-auto max-w-6xl px-8 py-20 md:py-24">
         <div className="h-px w-16 bg-brand-red" />
         {eyebrow && (
