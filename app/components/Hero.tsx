@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { figures } from "../data/figures";
 
 export default function Hero() {
@@ -39,50 +40,24 @@ export default function Hero() {
           </dl>
         </div>
 
-        {/* Visual card: network geometry, a nod to architecture diagrams */}
-        <div
-          aria-hidden="true"
-          className="relative mx-auto hidden aspect-[5/4] w-full max-w-md overflow-hidden rounded-3xl border border-line bg-panel shadow-2xl md:block"
-        >
-          <div
-            className="absolute inset-0 opacity-[0.08]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }}
+        {/* Icon card: background and icon colour follow the light/dark theme */}
+        <div className="mx-auto hidden aspect-square w-full max-w-sm items-center justify-center rounded-3xl border border-line bg-tint p-16 shadow-2xl md:flex">
+          <Image
+            src="/icon-color.svg"
+            alt="Methods Consultancy"
+            width={240}
+            height={240}
+            priority
+            className="h-auto w-full dark:hidden"
           />
-          <svg viewBox="400 90 380 460" className="absolute inset-0 h-full w-full">
-            <g stroke="#F50B14" strokeOpacity="0.7" strokeWidth="1.5">
-              <line x1="520" y1="120" x2="640" y2="200" />
-              <line x1="640" y1="200" x2="720" y2="120" />
-              <line x1="640" y1="200" x2="600" y2="330" />
-              <line x1="600" y1="330" x2="740" y2="360" />
-              <line x1="600" y1="330" x2="540" y2="470" />
-              <line x1="540" y1="470" x2="680" y2="520" />
-              <line x1="430" y1="300" x2="600" y2="330" />
-              <line x1="430" y1="300" x2="520" y2="120" />
-              <line x1="740" y1="360" x2="680" y2="520" />
-            </g>
-            <g fill="#F50B14">
-              <circle cx="640" cy="200" r="7" />
-              <circle cx="600" cy="330" r="7" />
-              <circle cx="540" cy="470" r="6" />
-              <circle cx="430" cy="300" r="6" />
-            </g>
-            <g fill="#fff" fillOpacity="0.8">
-              <circle cx="520" cy="120" r="4" />
-              <circle cx="720" cy="120" r="4" />
-              <circle cx="740" cy="360" r="4" />
-              <circle cx="680" cy="520" r="4" />
-            </g>
-          </svg>
-          <div className="absolute bottom-5 left-5 rounded-2xl bg-surface px-4 py-3 shadow-lg">
-            <p className="text-xs text-muted">Independent firm, Nairobi</p>
-            <p className="font-display text-lg font-semibold text-ink">
-              Working across Africa since 2009
-            </p>
-          </div>
+          <Image
+            src="/icon-white.svg"
+            alt=""
+            width={240}
+            height={240}
+            priority
+            className="hidden h-auto w-full dark:block"
+          />
         </div>
       </div>
     </section>
