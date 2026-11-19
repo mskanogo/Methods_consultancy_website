@@ -64,7 +64,7 @@ export default function Footer() {
           <p className="mt-2 text-sm text-muted">Nairobi, Kenya</p>
           <Link
             href="/contact"
-            className={`mt-6 inline-block bg-brand-red px-5 py-2 text-sm font-semibold text-white ${focus}`}
+            className="btn-primary mt-6"
           >
             Book a consultation
           </Link>
