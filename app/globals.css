@@ -16,22 +16,26 @@
 :root {
   color-scheme: light;
   --surface: #ffffff;
-  --surface-alt: var(--color-brand-grey);
-  --ink: var(--color-brand-ink);
-  --muted: var(--color-brand-mid-grey);
-  --line: var(--color-brand-grey);
+  --surface-alt: #f6f6f7;
+  --ink: #0a0a0b;
+  --muted: #55565a;
+  --line: #e6e6e8;
   --accent: var(--color-brand-red-dark);
   --panel: var(--color-brand-ink);
+  --tint: #fff4f4;
 }
 
+/* True black dark mode: pure black page, near-black cards. */
 .dark {
   color-scheme: dark;
-  --surface: #141416;
-  --surface-alt: #1d1d21;
-  --ink: #f2f2f3;
+  --surface: #000000;
+  --surface-alt: #0d0d0e;
+  --ink: #ffffff;
   --muted: #a8a9ad;
-  --line: #34353a;
+  --line: #26272b;
   --accent: #ff5a60;
+  --panel: #0d0d0e;
+  --tint: #1a0b0c;
 }
 
 @theme inline {
@@ -42,6 +46,7 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-panel: var(--panel);
+  --color-tint: var(--tint);
   --font-sans: var(--font-sans-brand), system-ui, sans-serif;
   --font-display: var(--font-serif-brand), Georgia, serif;
 }
@@ -64,5 +69,27 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-rule { transform-origin: left; animation: rule-draw 0.9s ease-out both; }
-  .hero-rise { animation: rise 0.8s ease-out 0.5s both; }
+  .hero-rise { animation: rise 0.8s ease-out 0.1s both; }
+}
+
+/* Shared building blocks (LearnHub-style rounded buttons and pills). */
+@utility btn {
+  @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+}
+
+/* Dark red keeps white text above the 4.5:1 contrast ratio. */
+@utility btn-primary {
+  @apply btn bg-brand-red-dark text-white shadow-sm hover:opacity-90;
+}
+
+@utility btn-secondary {
+  @apply btn border border-line bg-surface text-ink hover:border-ink;
+}
+
+@utility btn-light {
+  @apply btn bg-white text-brand-ink hover:bg-brand-grey focus-visible:outline-brand-ink;
+}
+
+@utility pill {
+  @apply inline-flex items-center gap-2 rounded-full border border-accent/20 bg-tint px-4 py-1.5 text-sm font-semibold text-accent;
 }

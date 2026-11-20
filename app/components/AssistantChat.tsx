@@ -94,7 +94,7 @@ export default function AssistantChat({ topic, topicTitle }: AssistantChatProps)
           <button
             type="button"
             onClick={() => setConsented(true)}
-            className={`bg-brand-red px-6 py-3 font-semibold text-white ${focus}`}
+            className={`bg-brand-red-dark px-6 py-3 font-semibold text-white ${focus}`}
           >
             I understand, start chat
           </button>
@@ -158,7 +158,7 @@ export default function AssistantChat({ topic, topicTitle }: AssistantChatProps)
         <button
           type="submit"
           disabled={!input.trim() || busy}
-          className={`bg-brand-red px-5 py-3 text-sm font-semibold text-white disabled:opacity-50 ${focus}`}
+          className={`bg-brand-red-dark px-5 py-3 text-sm font-semibold text-white disabled:opacity-50 ${focus}`}
         >
           Send
         </button>

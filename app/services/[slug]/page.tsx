@@ -31,7 +31,7 @@ export default async function ServicePage({ params }: Props) {
   const related = [1, 2, 3].map((n) => services[(index + n) % services.length]);
 
   return (
-    <main>
+    <main id="main">
       <PageHeader
         eyebrow="Service"
         title={service.title}

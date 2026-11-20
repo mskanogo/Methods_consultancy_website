@@ -31,7 +31,7 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      className="border border-white/30 px-3 py-2 text-sm font-medium text-white hover:border-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      className="btn-secondary"
     >
       {dark ? "Light mode" : "Dark mode"}
     </button>

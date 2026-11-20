@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main>
+    <main id="main">
       <PageHeader
         eyebrow="Services"
         title="Enterprise architecture that actually governs."
@@ -21,9 +21,9 @@ export default function ServicesPage() {
 
       <section className="bg-surface py-24">
         <div className="mx-auto max-w-6xl px-8">
-          <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2">
-            {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {services.map((service, i) => (
+              <ServiceCard key={service.slug} service={service} index={i} />
             ))}
           </div>
         </div>

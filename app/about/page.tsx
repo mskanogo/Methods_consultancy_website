@@ -42,7 +42,7 @@ const draftNote = "Working copy, pending confirmation.";
 
 export default function AboutPage() {
   return (
-    <main>
+    <main id="main">
       <PageHeader
         eyebrow="About"
         title="An architecture firm for institutions that answer to regulators."

@@ -1,29 +1,37 @@
 import Link from "next/link";
 import Hero from "./components/Hero";
 import ServiceCard from "./components/ServiceCard";
+import SectionHeading from "./components/SectionHeading";
 import { services } from "./data/services";
 import { sectors } from "./data/sectors";
 import { featuredEngagement } from "./data/engagements";
 import CtaBand from "./components/CtaBand";
 
-// Facts taken from the brief (Section 2.1 and Section 3)
-const figures = [
-  { label: "Established", value: "2009" },
-  { label: "Service lines", value: "10" },
-  { label: "Sectors served", value: "3" },
-];
+const standards = ["TOGAF 10", "BCBS 239", "ISO 20022", "CPMI-PFMI"];
 
 export default function Home() {
   return (
-    <main>
+    <main id="main">
       <Hero />
 
       {/* Standards */}
       <section className="border-b border-line bg-surface px-8 py-8">
-        <p className="mx-auto max-w-4xl text-center text-sm text-muted">
-          We work to TOGAF 10, BCBS 239, ISO 20022, CPMI-PFMI, and national
-          data-protection and cybersecurity frameworks.
-        </p>
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 text-center">
+          <p className="text-sm text-muted">
+            We work to these standards, and to national data-protection and
+            cybersecurity frameworks.
+          </p>
+          <ul className="flex flex-wrap justify-center gap-3">
+            {standards.map((standard) => (
+              <li
+                key={standard}
+                className="rounded-full border border-line bg-alt px-4 py-1.5 text-sm font-semibold text-ink"
+              >
+                {standard}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       {/* Intro */}
@@ -44,11 +52,8 @@ export default function Home() {
               review vendor solutions for conformance. Clients are left with a
               functioning, standards-aligned architecture practice.
             </p>
-            <Link
-              href="/about"
-              className="mt-8 inline-block font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            >
-              About the firm
+            <Link href="/about" className="btn-secondary mt-8">
+              About the firm <span aria-hidden="true" className="ml-2">→</span>
             </Link>
           </div>
         </div>
@@ -57,110 +62,89 @@ export default function Home() {
       {/* Services */}
       <section className="bg-surface pb-24">
         <div className="mx-auto max-w-6xl px-8">
-          <h2 className="font-display text-4xl font-semibold text-ink md:text-5xl">
-            Ten services, one working discipline
-          </h2>
-          <div className="mt-12 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2">
-            {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+          <SectionHeading
+            eyebrow="Services"
+            title="Ten services, one working discipline"
+          />
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {services.map((service, i) => (
+              <ServiceCard key={service.slug} service={service} index={i} />
             ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link href="/services" className="btn-primary">
+              View all services
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Sectors */}
-      <section className="bg-panel text-white">
-        <div className="mx-auto grid max-w-6xl gap-12 px-8 py-24 md:grid-cols-[1fr_2fr]">
-          <div>
-            <h2 className="font-display text-4xl font-semibold">
-              Who we work with
-            </h2>
-            <Link
-              href="/sectors"
-              className="mt-8 inline-block bg-white px-6 py-3 font-medium text-brand-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              View sectors
-            </Link>
-          </div>
-          <ul className="divide-y divide-white/15 border-y border-white/15">
-            {sectors.map((sector) => (
-              <li key={sector.slug} className="py-8">
-                <h3 className="font-display text-2xl font-semibold">
+      <section className="bg-alt">
+        <div className="mx-auto max-w-6xl px-8 py-24">
+          <SectionHeading eyebrow="Sectors" title="Who we work with" />
+          <ul className="mt-12 grid gap-6 md:grid-cols-3">
+            {sectors.map((sector, i) => (
+              <li
+                key={sector.slug}
+                className="rounded-2xl border border-line bg-surface p-8 shadow-sm"
+              >
+                <span
+                  aria-hidden="true"
+                  className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-tint text-sm font-bold text-accent"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display text-2xl font-semibold text-ink">
                   {sector.title}
                 </h3>
-                <p className="mt-2 max-w-lg text-sm leading-relaxed text-brand-grey">
+                <p className="mt-3 text-sm leading-relaxed text-muted">
                   {sector.summary}
                 </p>
               </li>
             ))}
           </ul>
+          <div className="mt-12 text-center">
+            <Link href="/sectors" className="btn-primary">
+              View sectors
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Featured engagement */}
       <section className="bg-surface">
-        <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
-          <div>
-            <h2 className="font-display text-4xl font-semibold text-ink">
-              Featured engagement
-            </h2>
-            <Link
-              href="/experience"
-              className="mt-6 inline-block font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            >
-              See our experience
-            </Link>
-          </div>
-          <div className="border-t-2 border-ink pt-6">
-            <p className="text-sm font-semibold text-accent">
-              {featuredEngagement.sector}
-            </p>
-            <h3 className="mt-1 font-display text-2xl font-semibold text-ink">
+        <div className="mx-auto max-w-6xl px-8 py-24">
+          <SectionHeading eyebrow="Experience" title="Featured engagement" />
+          <div className="mt-12 rounded-3xl border border-line bg-surface p-8 shadow-lg md:p-12">
+            <span className="pill">{featuredEngagement.sector}</span>
+            <h3 className="mt-4 font-display text-3xl font-semibold text-ink">
               {featuredEngagement.client ?? featuredEngagement.anonymisedLabel}
             </h3>
-            <dl className="mt-6 space-y-5 text-sm">
+            <dl className="mt-8 grid gap-8 text-sm md:grid-cols-3">
               <div>
                 <dt className="font-semibold text-ink">Mandate</dt>
-                <dd className="mt-1 leading-relaxed text-muted">
+                <dd className="mt-2 leading-relaxed text-muted">
                   {featuredEngagement.mandate}
                 </dd>
               </div>
               <div>
                 <dt className="font-semibold text-ink">What we did</dt>
-                <dd className="mt-1 leading-relaxed text-muted">
+                <dd className="mt-2 leading-relaxed text-muted">
                   {featuredEngagement.whatWeDid}
                 </dd>
               </div>
               <div>
                 <dt className="font-semibold text-ink">What changed</dt>
-                <dd className="mt-1 leading-relaxed text-muted">
+                <dd className="mt-2 leading-relaxed text-muted">
                   {featuredEngagement.whatChanged}
                 </dd>
               </div>
             </dl>
+            <Link href="/experience" className="btn-secondary mt-10">
+              See our experience <span aria-hidden="true" className="ml-2">→</span>
+            </Link>
           </div>
-        </div>
-      </section>
-
-      {/* Figures */}
-      <section className="bg-alt">
-        <div className="mx-auto grid max-w-6xl gap-10 px-8 py-24 md:grid-cols-[1fr_2fr]">
-          <h2 className="font-display text-4xl font-semibold text-ink">
-            The practice in figures
-          </h2>
-          <dl className="divide-y divide-ink/15 border-y border-ink/15">
-            {figures.map((figure) => (
-              <div
-                key={figure.label}
-                className="flex items-baseline justify-between py-6"
-              >
-                <dt className="text-sm text-muted">{figure.label}</dt>
-                <dd className="font-display text-5xl font-semibold text-ink">
-                  {figure.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </section>
 
