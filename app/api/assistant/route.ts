@@ -88,8 +88,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "unavailable" }, { status: 502 });
     }
 
-    const data = (await response.json()) as {
+     const data = (await response.json()) as {
       content?: { type: string; text?: string }[];
+      stop_reason?: string;
     };
     const reply = (data.content ?? [])
       .filter((block) => block.type === "text" && typeof block.text === "string")
@@ -101,7 +102,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "unavailable" }, { status: 502 });
     }
 
-    return NextResponse.json({ reply });
+    // If the model hit the length limit, end on the last complete sentence,
+    // so a reply never stops mid-word.
+    let finalReply = reply;
+    if (data.stop_reason === "max_tokens") {
+      const complete = reply.match(/^[\s\S]*[.!?](?=\s|$)/);
+      if (complete) finalReply = complete[0];
+    }
+    return NextResponse.json({ reply: finalReply });
   } catch (error) {
     console.error("Assistant request failed", error);
     return NextResponse.json({ error: "unavailable" }, { status: 502 });

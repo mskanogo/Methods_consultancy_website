@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main>
+    <main id="main">
       <PageHeader
         eyebrow="Contact"
         title="Start a conversation."
@@ -32,7 +32,7 @@ export default function ContactPage() {
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-8 inline-block bg-brand-red px-6 py-3 font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+                className="mt-8 inline-block bg-brand-red-dark px-6 py-3 font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
               >
                 Book a call
               </a>

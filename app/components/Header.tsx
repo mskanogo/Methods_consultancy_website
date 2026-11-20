@@ -43,7 +43,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-8 py-3">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-8 py-3">
         <Link href="/" aria-label="Methods Consultancy home" className={focus}>
           <Image
             src="/logo-color.svg"
@@ -64,8 +64,8 @@ export default function Header() {
         </Link>
 
         {/* Top-right navigation: each link opens its own page */}
-        <div className="hidden items-center gap-2 md:flex">
-          <nav aria-label="Main" className="flex items-center gap-1">
+        <div className="hidden flex-wrap items-center justify-end gap-2 md:flex">
+          <nav aria-label="Main" className="flex flex-wrap items-center gap-1">
             {links.map((link) => (
               <Link
                 key={link.href}

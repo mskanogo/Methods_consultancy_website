@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main>
+    <main id="main">
       <PageHeader
         eyebrow="Services"
         title="Enterprise architecture that actually governs."

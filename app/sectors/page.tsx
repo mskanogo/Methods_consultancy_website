@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function SectorsPage() {
   return (
-    <main>
+    <main id="main">
       <PageHeader
         eyebrow="Sectors"
         title="Who we work with."

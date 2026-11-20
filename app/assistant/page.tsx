@@ -18,7 +18,7 @@ export default async function AssistantPage({ searchParams }: Props) {
   const service = services.find((s) => s.slug === slug);
 
   return (
-    <main>
+    <main id="main">
       <PageHeader
         eyebrow="Assistant"
         title="Ask us anything about Methods Consultancy."

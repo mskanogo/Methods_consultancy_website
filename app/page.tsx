@@ -11,7 +11,7 @@ const standards = ["TOGAF 10", "BCBS 239", "ISO 20022", "CPMI-PFMI"];
 
 export default function Home() {
   return (
-    <main>
+    <main id="main">
       <Hero />
 
       {/* Standards */}

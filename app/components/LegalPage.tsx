@@ -8,7 +8,7 @@ type LegalPageProps = {
 
 export default function LegalPage({ title, summary, covers }: LegalPageProps) {
   return (
-    <main>
+    <main id="main">
       <PageHeader eyebrow="Legal" title={title} summary={summary} />
       <section className="bg-surface">
         <div className="mx-auto max-w-3xl px-8 py-24">

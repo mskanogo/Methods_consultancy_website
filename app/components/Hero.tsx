@@ -30,11 +30,11 @@ export default function Hero() {
 
           <dl className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
             {figures.map((figure) => (
-              <div key={figure.label}>
+              <div key={figure.label} className="flex flex-col-reverse">
+                <dt className="text-sm text-muted">{figure.label}</dt>
                 <dd className="font-display text-3xl font-semibold text-ink">
                   {figure.value}
                 </dd>
-                <dt className="text-sm text-muted">{figure.label}</dt>
               </div>
             ))}
           </dl>
